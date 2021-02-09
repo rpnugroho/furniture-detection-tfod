@@ -73,18 +73,22 @@ def main():
                                       type=["jpg", "png", "jpeg"])
 
     threshold = st.sidebar.slider("Confidence threshold",
-                                    0.0, 1.0, DEFAULT_THRESHOLD, 0.05)
+                                    0.0, 1.0, DEFAULT_THRESHOLD, 0.01)
     n_boxes = st.sidebar.slider(label="Number of boxes to draw",
                                 min_value=1, 
                                 max_value=10, 
                                 value=10)
+    
+    resize = st.sidebar.checkbox("Resize images")
 
     if uploaded_image is not None:
         image = Image.open(uploaded_image)
-        w, h = image.size
-        height = 512
-        width = int((h/height) * w)
-        image = image.resize((width, height))
+
+        if resize:
+            w, h = image.size
+            height = 512
+            width = int((h/height) * w)
+            image = image.resize((width, height))
 
         # make sure image is RGB
         image = image.convert("RGB")
@@ -99,7 +103,8 @@ def main():
                                                     PATH_TO_LABEL)
                 
                 st.image(image_np_with_detections, use_column_width=True)
-                st.text("Image resized to {}x{}".format(width, height))
+                if resize:
+                    st.text("Image resized to {}x{}".format(width, height))
         else:
             st.subheader("Your image will displayed here...")
 
