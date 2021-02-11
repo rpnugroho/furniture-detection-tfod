@@ -1,4 +1,7 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
 .vscode
 .DS_Store
-model
-object_detection
+model/
