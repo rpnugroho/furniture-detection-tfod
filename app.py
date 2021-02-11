@@ -76,7 +76,7 @@ def main():
                                     0.0, 1.0, DEFAULT_THRESHOLD, 0.01)
     n_boxes = st.sidebar.slider(label="Number of boxes to draw",
                                 min_value=1, 
-                                max_value=10, 
+                                max_value=25, 
                                 value=10)
     
     resize = st.sidebar.checkbox("Resize images")
