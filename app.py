@@ -94,7 +94,7 @@ def main():
         image = image.convert("RGB")
 
         if st.sidebar.button("Make a prediction"):
-            "Making a prediction and drawing", n_boxes, "on your image..."
+            "Making a prediction and drawing", n_boxes, "boxes on your image..."
             with st.spinner("Predicting..."):
                 image_np_with_detections = inference(image,
                                                     threshold,
